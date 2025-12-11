@@ -1,8 +1,15 @@
 import axios from 'axios';
 
-const API = axios.create({ baseURL: 'http://localhost:5000/api' });
+// 1. SMART URL SELECTION
+// If we are in production (Vercel), use the Render URL.
+// If we are in development (Localhost), use the Local URL.
+const BACKEND_URL = import.meta.env.PROD 
+  ? "https://agrismart-api-dzfi.onrender.com/api"  
+  : "http://localhost:5000/api";
 
-// Add token to headers if it exists
+const API = axios.create({ baseURL: BACKEND_URL });
+
+// 2. Add Token to headers if it exists (Middleware)
 API.interceptors.request.use((req) => {
   if (localStorage.getItem('token')) {
     req.headers.Authorization = `Bearer ${localStorage.getItem('token')}`;
@@ -10,6 +17,7 @@ API.interceptors.request.use((req) => {
   return req;
 });
 
+// 3. API Endpoints
 export const login = (formData) => API.post('/auth/login', formData);
 export const register = (formData) => API.post('/auth/register', formData);
 export const fetchProducts = () => API.get('/products');
