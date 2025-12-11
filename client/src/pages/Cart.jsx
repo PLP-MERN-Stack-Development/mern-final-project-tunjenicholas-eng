@@ -50,16 +50,16 @@ const Cart = () => {
   // Smart Image Logic (Consistent with ProductCard)
   // Inside Cart.jsx
     const getDisplayImage = (item) => {
-    // 1. Check if item has a valid image link
-    if (item.image && item.image.startsWith('http')) return item.image;
-    
-    // 2. Fallback based on category
-    switch (item.category) {
-        case 'Vegetables': return "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&q=80";
-        case 'Fruits': return "https://images.unsplash.com/photo-1619566636858-adf3ef46400b?auto=format&fit=crop&q=80";
-        case 'Dairy': return "https://images.unsplash.com/photo-1550583724-b2692b85b150?auto=format&fit=crop&q=80";
-        default: return "https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&q=80";
-    }
+        // 1. Check if item has a valid image link
+        if (item.image && item.image.startsWith('http')) return item.image;
+        
+        // 2. Fallback based on category
+        switch (item.category) {
+            case 'Vegetables': return "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&q=80";
+            case 'Fruits': return "https://images.unsplash.com/photo-1619566636858-adf3ef46400b?auto=format&fit=crop&q=80";
+            case 'Dairy': return "https://images.unsplash.com/photo-1550583724-b2692b85b150?auto=format&fit=crop&q=80";
+            default: return "https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&q=80";
+        }
     };
 
   return (
